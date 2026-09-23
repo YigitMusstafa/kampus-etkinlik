@@ -67,17 +67,17 @@ Ana sayfa `index.html` olduğu için adres doğrudan onu açar.
 
 ## Teslim
 
-- GitHub repo linki: `<TODO: repo linkini buraya yapıştır>`
+- GitHub repo linki: https://github.com/YigitMusstafa/kampus-etkinlik
 - Git tag: `sprint-01`
-- Canlı URL (Vercel): `<TODO: deploy sonrası Vercel adresini buraya yapıştır>`
+- Canlı URL (Vercel): https://kampus-etkinlik-alpha.vercel.app
 
 ## Bitti demeden önce kontrol listesi
 
-- [ ] Beş sayfa canlı adreste açılıyor
-- [ ] Menüde kırık bağlantı yok
-- [ ] Her sayfada tek `h1`, düzgün sıra
-- [ ] Her alanın görünür `label`'ı var
-- [ ] `required` uyarısı çalışıyor
-- [ ] Her etkinlik bir hücre, içi aynı sırada
-- [ ] Hiç CSS ve JavaScript yok
-- [ ] README'de canlı URL yazıyor
+- [x] Beş sayfa canlı adreste açılıyor
+- [x] Menüde kırık bağlantı yok
+- [x] Her sayfada tek `h1`, düzgün sıra
+- [x] Her alanın görünür `label`'ı var
+- [x] `required` uyarısı çalışıyor
+- [x] Her etkinlik bir hücre, içi aynı sırada
+- [x] Hiç CSS ve JavaScript yok
+- [x] README'de canlı URL yazıyor
