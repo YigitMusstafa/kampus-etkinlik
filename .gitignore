@@ -1,0 +1,13 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editör
+.vscode/
+.idea/
+
+# Vercel
+.vercel
+
+# Diğer
+*.log
