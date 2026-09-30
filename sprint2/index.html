@@ -2,16 +2,18 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kampüs Etkinlikleri</title>
+  <link rel="stylesheet" href="css/2321032021.css">
 </head>
 <body>
   <header>
     <h1>Kampüs Etkinlikleri</h1>
     <nav>
-      <a href="index.html">Ana Sayfa</a>
+      <a href="index.html" aria-current="page">Ana Sayfa</a>
       <a href="etkinlikler.html">Etkinlikler</a>
-      <a href="etkinlik-detay.html">Detay</a>
       <a href="etkinlik-ekle.html">Ekle</a>
+      <a href="etkinlik-guncelle.html">Güncelle</a>
     </nav>
   </header>
 
@@ -22,10 +24,10 @@
       etkinlikleri tek yerden takip edebileceğiniz basit bir duyuru sayfasıdır.
     </p>
 
-    <section>
+    <section class="kartlar">
       <h2>Yaklaşan Etkinlikler</h2>
 
-      <section>
+      <article class="kart">
         <h3>AI’s Path Forward: From Intelligence to Super-intelligence</h3>
         <figure>
           <img src="afis.jpg" alt="Minds of AI #2 afişi: Dr. Deepak Painuli, AI’s Path Forward, 13.02.2026 saat 11.30" width="320">
@@ -39,9 +41,9 @@
           zekânın süper zekâya uzanan yolunu anlatıyor.
         </p>
         <a href="etkinlik-detay.html">Detayları gör</a>
-      </section>
+      </article>
 
-      <section>
+      <article class="kart">
         <h3>Yapay Zekâ ve Yöneylem Araştırması Arakesiti</h3>
         <figure>
           <img src="afis2.jpg" alt="Yapay Zekâ ve Yöneylem Araştırması Arakesiti paneli afişi, 16.10.2026 saat 14.00" width="320">
@@ -55,7 +57,7 @@
           araştırmasının kesişimini konu alan panel oturumu.
         </p>
         <a href="etkinlik-detay.html">Detayları gör</a>
-      </section>
+      </article>
     </section>
 
     <p>
