@@ -81,3 +81,23 @@ Ana sayfa `index.html` olduğu için adres doğrudan onu açar.
 - [x] Her etkinlik bir hücre, içi aynı sırada
 - [x] Hiç CSS ve JavaScript yok
 - [x] README'de canlı URL yazıyor
+
+---
+
+# Sprint 2 — CSS ve Responsive
+
+`sprint1` olduğu gibi duruyor; Sprint 2 onun kopyası olan `sprint2/` klasöründe.
+Beş sayfa da `sprint2/css/2321032021.css` dosyasına bağlı.
+
+- `--no: 2321032021` → `--ton` = 2321032021 mod 360 = **61** (zeytin/hardal tonu)
+- Son hane **1** → `--font: Verdana`
+- Renk ve boşlukların hepsi `var(--...)` ile; ek renkler de `--ton`'dan türetildi
+- Etkinlikler tablodan çıkarıldı: `section > article` kartlar + `display: grid`
+  (telefonda tek sütun, geniş ekranda 2–3 sütun)
+- Detay sayfasında afiş solda, künye (`dl`) sağda; telefonda alt alta
+- Formlarda label üstte, boş gönderilen alan kırmızı ve altında uyarı çıkıyor
+- Menü: Ana Sayfa · Etkinlikler · Ekle · Güncelle (telefonda 2 × 2)
+
+**Vercel:** Settings → Root Directory → `sprint2`
+
+**Teslim:** Git tag `sprint-02`
