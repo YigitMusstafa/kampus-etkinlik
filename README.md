@@ -1,3 +1,5 @@
+https://kampus-etkinlik-alpha.vercel.app
+
 # Kampüs Etkinlikleri — Sprint 1
 
 Kampüs Etkinlikleri uygulamasının iskeleti. Sadece HTML ile kuruldu (CSS yok,
@@ -101,3 +103,49 @@ Beş sayfa da `sprint2/css/2321032021.css` dosyasına bağlı.
 **Vercel:** Settings → Root Directory → `sprint2`
 
 **Teslim:** Git tag `sprint-02`
+
+---
+
+# Sprint 3 — JavaScript ve DOM
+
+`sprint2` olduğu gibi duruyor; Sprint 3 onun kopyası olan `sprint3/` klasöründe.
+Veri tek yerde (`js/data.js`), sayfalar ondan üretiliyor. Framework, jQuery ve
+localStorage yok; form veriyi kaydetmez (kalıcı kayıt backend sprintlerinde).
+
+```
+sprint3/
+  css/2321032021.css
+  js/
+    data.js           6 etkinlik (export const events = [...]) + tarih yardımcıları
+    event-list.js     index.html, etkinlikler.html
+    event-detail.js   etkinlik-detay.html
+    event-form.js     etkinlik-ekle.html, etkinlik-guncelle.html
+  index.html, etkinlikler.html, etkinlik-detay.html,
+  etkinlik-ekle.html, etkinlik-guncelle.html, favicon.svg
+```
+
+- **data.js:** 6 etkinlik; her nesnede `id, title, category, date, time, location,
+  description, capacity`. Tarih `GG-AA-YYYY`, saat `SS:DD`. Atölye ve Seminer'de
+  ikişer etkinlik var.
+- **Liste:** HTML'de elle yazılmış kart yok; `createCard` + `map/join/innerHTML`.
+  Her "Detayları gör" linki `etkinlik-detay.html?id=event-N`. Tarih
+  `toLocaleDateString("tr-TR")` ile "16 Ekim 2026" gibi yazılıyor.
+- **Ana sayfa:** aynı modül; `data-limit="2"` olduğu için tarihi geçmemiş en yakın
+  2 etkinlik (`[...events]` kopyası sıralanıyor, asıl dizi bozulmuyor).
+- **Arama + kategori:** kategoriler veriden (`new Set`), arama `input`, kategori
+  `change` ile çalışıyor; ikisi birlikte (`filter` + `&&`), Türkçe İ/ı için
+  `toLocaleLowerCase("tr-TR")`. Sonuç sayısı ya da "bulunamadı" mesajı yazılıyor.
+- **Detay:** `URLSearchParams` + `find`; geçersiz ya da eksik id'de kırmızı hata
+  kutusu ve "Listeye dön", konsolda hata yok.
+- **Form:** `novalidate`, `submit` + `preventDefault` + `FormData`; hatalı alan
+  kırmızı (`aria-invalid`) ve altında mesaj; hepsi doğruysa yeşil kutuda nesne
+  (`JSON.stringify`).
+- **Güncelleme:** menüde yok, sadece detaydaki "Bu etkinliği güncelle" ile
+  gelinir (`?id=`). Form o etkinlikle dolu açılır; id yoksa form yerine uyarı.
+
+**Yerelde:** modüller `file://` ile çalışmaz. VS Code → Live Server →
+`http://127.0.0.1:5500/sprint3/`
+
+**Vercel:** Settings → Root Directory → `sprint3`
+
+**Teslim:** Git tag `sprint-03`
