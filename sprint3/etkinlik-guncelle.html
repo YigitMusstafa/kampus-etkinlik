@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Etkinlik Güncelle · Kampüs Etkinlikleri</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/2321032021.css">
+  <script type="module" src="js/event-form.js"></script>
 </head>
 <body>
   <header>
@@ -13,52 +15,67 @@
       <a href="index.html">Ana Sayfa</a>
       <a href="etkinlikler.html">Etkinlikler</a>
       <a href="etkinlik-ekle.html">Ekle</a>
-      <a href="etkinlik-guncelle.html" aria-current="page">Güncelle</a>
     </nav>
   </header>
 
   <main>
-    <form action="#" method="post">
+    <!-- Bu sayfaya detaydaki "Bu etkinliği güncelle" ile gelinir (?id=...). event-form.js alanları doldurur; id yoksa form yerine uyarı çıkar. -->
+    <form id="etkinlik-formu" data-mode="guncelle" novalidate>
+      <p class="form-not">Yıldızlı (*) alanlar zorunludur. Alanlar mevcut etkinliğin bilgileriyle dolu gelir. Bu sprintte form veri güncellemez.</p>
+
       <p>
-        <label for="ad">Etkinlik Adı</label>
-        <input type="text" id="ad" name="ad" value="AI’s Path Forward: From Intelligence to Super-intelligence" required>
+        <label for="ad">Etkinlik Adı *</label>
+        <input type="text" id="ad" name="ad" required aria-describedby="ad-hata">
+        <span id="ad-hata" class="hata"></span>
       </p>
 
       <p>
-        <label for="kategori">Kategori</label>
-        <select id="kategori" name="kategori" required>
+        <label for="kategori">Kategori *</label>
+        <select id="kategori" name="kategori" required aria-describedby="kategori-hata">
           <option value="">Seçiniz</option>
-          <option value="seminer">Seminer</option>
-          <option value="atolye">Atölye</option>
-          <option value="webinar" selected>Webinar</option>
-          <option value="panel">Panel</option>
+          <option value="Atölye">Atölye</option>
+          <option value="Panel">Panel</option>
+          <option value="Seminer">Seminer</option>
+          <option value="Webinar">Webinar</option>
         </select>
+        <span id="kategori-hata" class="hata"></span>
       </p>
 
       <p>
-        <label for="tarih">Tarih</label>
-        <input type="date" id="tarih" name="tarih" value="2026-02-13" required>
+        <label for="tarih">Tarih *</label>
+        <input type="date" id="tarih" name="tarih" required aria-describedby="tarih-hata">
+        <span id="tarih-hata" class="hata"></span>
       </p>
 
       <p>
-        <label for="saat">Saat</label>
-        <input type="time" id="saat" name="saat" value="11:30" required>
+        <label for="saat">Saat *</label>
+        <input type="time" id="saat" name="saat" required aria-describedby="saat-hata">
+        <span id="saat-hata" class="hata"></span>
       </p>
 
       <p>
-        <label for="yer">Yer</label>
-        <input type="text" id="yer" name="yer" value="Çevrimiçi (Zoom)" required>
+        <label for="yer">Yer *</label>
+        <input type="text" id="yer" name="yer" placeholder="Örn. Mühendislik Fakültesi Konferans Salonu" required aria-describedby="yer-hata">
+        <span id="yer-hata" class="hata"></span>
+      </p>
+
+      <p>
+        <label for="kontenjan">Kontenjan</label>
+        <input type="number" id="kontenjan" name="kontenjan" min="1" max="1000" step="1" inputmode="numeric" aria-describedby="kontenjan-hata">
+        <span id="kontenjan-hata" class="hata"></span>
       </p>
 
       <p>
         <label for="aciklama">Açıklama</label>
-        <textarea id="aciklama" name="aciklama" rows="4" required>AIARC'ın "Minds of AI" webinar serisinin 2. oturumunda Dr. Deepak Painuli, yapay zekânın zekâdan süper zekâya uzanan yolunu ele alacak.</textarea>
+        <textarea id="aciklama" name="aciklama" rows="4"></textarea>
       </p>
 
       <button type="submit">Güncelle</button>
     </form>
 
-    <p><a class="geri" href="etkinlik-detay.html">Etkinlik detayına dön</a></p>
+    <div id="form-mesaj" class="form-mesaj" aria-live="polite"></div>
+
+    <p id="detaya-don"><a class="geri" href="etkinlikler.html">Etkinlik detayına dön</a></p>
   </main>
 
   <footer>
