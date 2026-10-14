@@ -149,3 +149,48 @@ sprint3/
 **Vercel:** Settings → Root Directory → `sprint3`
 
 **Teslim:** Git tag `sprint-03`
+
+---
+
+# Sprint 4 — Vite, TypeScript ve React
+
+`sprint3` olduğu gibi duruyor; aynı site `frontend/` klasöründe Vite React-TS
+projesi olarak yeniden yazıldı. Live Server yok, sayfayı Vite açıyor.
+React Router yok (Sprint 6): sayfa geçişi `useState` ile, adres çubuğu hep aynı.
+
+| Dosya | Görevi |
+|---|---|
+| `package.json` | Proje adı, komutlar (`dev`, `build`, `preview`) ve kullanılan paketlerin listesi. |
+| `package-lock.json` | Yüklenen paketlerin tam sürümleri; herkes aynı sürümleri kurar. |
+| `node_modules/` | `npm install` ile indirilen paketler; `.gitignore` sayesinde GitHub'a gitmez. |
+| `tsconfig*.json` | TypeScript ayarları (uygulama kodu ve Vite ayar dosyası için ayrı ayrı). |
+| `vite.config.ts` | Vite ayarları; React eklentisini açar. |
+| `index.html` | Tek HTML dosyası; içindeki boş `div#root`'a React çizer. |
+| `src/main.tsx` | React'i başlatır, `App`'i `#root`'a çizer (`createRoot`). |
+| `src/App.tsx` | Uygulamanın ana bileşeni; 5 sayfanın hepsi burada, açık sayfayı state seçer. |
+| `src/App.css` | App'in stilleri; Sprint 3'teki CSS dosyası olduğu gibi buraya taşındı. |
+| `src/index.css` | Tüm sayfaya genel stil; bu sprintte boş. |
+| `public/` | Olduğu gibi kopyalanan dosyalar (afiş `afis.jpg`, `favicon.svg`). |
+
+```
+frontend/src/
+  types/campus-event.ts   Category (4 değerli union) + CampusEvent arayüzü
+  data/events.ts          6 etkinlik, CampusEvent[] tipli
+  utils/filter-events.ts  searchEvents, filterByCategory, findEventById (saf)
+  App.tsx, App.css, index.css, main.tsx
+```
+
+- **Tipler:** kategori sadece `Seminer | Atölye | Söyleşi | Yarışma`; Sprint 3'teki
+  Webinar → Seminer, Panel → Söyleşi oldu. Tarihler `YYYY-AA-GG` (sıralama için).
+- **Ana sayfa:** `sort + slice` ile en yakın 2 etkinlik, `renderCard` + `map`, her kartta `key`.
+- **Etkinlikler:** arama ve kategori state (controlled input); filtreli liste her
+  çizimde hesaplanıyor; 0 sonuçta "bulunamadı".
+- **Detay:** seçili id state'ten, `findEventById`; afiş sadece varsa (`event-1`).
+- **Ekle / Güncelle:** aynı form bloğu, başlık sayfaya göre; sadece görünüm, kayıt yok.
+- **Sekme adı:** `useEffect` ile `Kampüs Etkinlikleri — {başlık}`.
+
+**Yerelde:** `cd frontend` → `npm install` → `npm run dev` → `http://localhost:5173`
+
+**Vercel:** Settings → Root Directory → `frontend`, Framework Preset → `Vite`
+
+**Teslim:** Git tag `sprint-04`

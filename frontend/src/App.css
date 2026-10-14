@@ -1,0 +1,352 @@
+/* Mustafa Yiğit Emet — 2321032021 */
+:root {
+    --no: 2321032021;
+    --ton: mod(var(--no), 360);
+    --renk-ana: hsl(var(--ton) 65% 38%);
+    --renk-zemin: hsl(var(--ton) 30% 97%);
+    --font: Verdana, sans-serif;
+    --bosluk-m: 1rem; --kose: 8px;
+}
+body { font-family: var(--font); }
+
+/* ---------- Türetilen değişkenler (hepsi --ton ve yukarıdaki değerlerden) ---------- */
+:root {
+    --renk-yazi: hsl(var(--ton) 30% 12%);
+    --renk-koyu: hsl(var(--ton) 60% 22%);
+    --renk-soluk: hsl(var(--ton) 15% 35%);
+    --renk-cizgi: hsl(var(--ton) 20% 85%);
+    --renk-acik: hsl(var(--ton) 55% 88%);
+    --renk-yari: hsl(var(--ton) 30% 97% / 0.5);
+    --renk-kart: hsl(0 0% 100%);
+    --renk-hata: hsl(0 70% 42%);
+    --renk-hata-zemin: hsl(0 80% 97%);
+    --renk-basari: hsl(130 55% 25%);
+    --renk-basari-zemin: hsl(130 50% 96%);
+
+    --bosluk-s: calc(var(--bosluk-m) / 2);
+    --bosluk-l: calc(var(--bosluk-m) * 2);
+    --kenar: max(var(--bosluk-m), (100% - var(--genislik)) / 2);
+
+    --genislik: 70rem;
+    --form-genislik: 36rem;
+    --dokunma: 2.75rem; /* ~44px, parmakla rahat basılır */
+}
+
+/* ---------- Temel ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--renk-zemin);
+    color: var(--renk-yazi);
+    line-height: 1.6;
+    overflow-wrap: break-word;
+}
+
+h1, h2, h3 { margin: 0; line-height: 1.25; }
+h2 { font-size: 1.4rem; color: var(--renk-koyu); }
+h3 { font-size: 1.1rem; }
+
+img { display: block; max-width: 100%; height: auto; }
+figure { margin: 0; }
+figcaption { margin-top: var(--bosluk-s); font-size: 0.8rem; color: var(--renk-soluk); }
+
+a { color: var(--renk-koyu); }
+a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--renk-koyu);
+    outline-offset: 2px;
+}
+
+/* ---------- Başlık ve menü (beş sayfada aynı) ---------- */
+header {
+    display: grid;
+    gap: var(--bosluk-m);
+    padding: var(--bosluk-m) var(--kenar);
+    background: var(--renk-ana);
+    color: var(--renk-yazi); /* ton 61 sarıya yakın: beyaz yazı okunmuyor, koyu yazı kullanıldı */
+}
+header h1 { font-size: clamp(1.4rem, 5vw, 2rem); }
+
+nav {
+    display: flex; /* üç link: Ana Sayfa, Etkinlikler, Ekle — telefonda da tek satır */
+    flex-wrap: wrap;
+    gap: var(--bosluk-s);
+}
+nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--dokunma);
+    padding: 0 var(--bosluk-s);
+    border-radius: var(--kose);
+    color: var(--renk-yazi);
+    font-weight: bold;
+    text-decoration: none;
+}
+nav a:hover { background: var(--renk-yari); }
+nav a[aria-current="page"] { background: var(--renk-zemin); }
+nav a:focus-visible { outline-color: var(--renk-yazi); }
+
+/* ---------- Sayfa gövdesi ---------- */
+main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--bosluk-l);
+    padding: var(--bosluk-l) var(--kenar);
+}
+main > * { margin: 0; }
+main > p:first-child { max-width: 60ch; }
+
+footer {
+    padding: var(--bosluk-m) var(--kenar);
+    border-top: 1px solid var(--renk-cizgi);
+    color: var(--renk-soluk);
+    font-size: 0.875rem;
+}
+footer p { margin: 0; }
+
+/* Başlık + filtre + liste gibi birlikte duran parçalar */
+.bolum {
+    display: grid;
+    gap: var(--bosluk-m);
+}
+
+/* ---------- Kartlar: section > article + grid (kartları event-list.js üretir) ---------- */
+.kartlar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr); /* telefon: tek sütun */
+    gap: var(--bosluk-m);
+}
+
+.kart {
+    display: flex;
+    flex-direction: column;
+    gap: var(--bosluk-s);
+    padding: var(--bosluk-m);
+    background: var(--renk-kart);
+    border: 1px solid var(--renk-cizgi);
+    border-top: 4px solid var(--renk-ana);
+    border-radius: var(--kose);
+}
+.kart p { margin: 0; }
+.kart > a:last-child { margin-top: auto; align-self: flex-start; }
+
+/* Kategori rozeti */
+.rozet {
+    display: inline-block;
+    padding: 0 var(--bosluk-s);
+    border-radius: var(--kose);
+    background: var(--renk-acik);
+    color: var(--renk-koyu);
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Buton görünümlü bağlantılar ve form butonu */
+.kart > a:last-child,
+.buton,
+button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--dokunma);
+    padding: 0 var(--bosluk-m);
+    background: var(--renk-koyu);
+    color: var(--renk-kart);
+    border: 0;
+    border-radius: var(--kose);
+    font: inherit;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+.kart > a:last-child:hover,
+.buton:hover,
+button:hover { background: var(--renk-yazi); }
+
+.kart > a:last-child::after { content: "→"; content: "→" / ""; margin-left: var(--bosluk-s); }
+.geri::before { content: "←"; content: "←" / ""; margin-right: 0.4em; }
+
+.butonlar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--bosluk-s);
+}
+
+/* ---------- Etkinlikler: arama + kategori filtresi ---------- */
+.filtre {
+    max-width: none; /* genel form genişliğini aşar, liste kadar geniş */
+    padding: var(--bosluk-m);
+}
+input[type="search"] { -webkit-appearance: none; appearance: none; }
+.sonuc {
+    font-weight: bold;
+    color: var(--renk-koyu);
+}
+
+/* ---------- Mesaj kutuları ---------- */
+.hata-kutusu,
+.basari-kutusu {
+    max-width: var(--form-genislik);
+    margin: 0;
+    padding: var(--bosluk-m);
+    border: 1px solid;
+    border-radius: var(--kose);
+}
+.hata-kutusu {
+    color: var(--renk-hata);
+    background: var(--renk-hata-zemin);
+}
+.basari-kutusu {
+    color: var(--renk-basari);
+    background: var(--renk-basari-zemin);
+}
+.basari-kutusu p { margin: 0 0 var(--bosluk-s); }
+.basari-kutusu pre {
+    margin: 0;
+    color: var(--renk-yazi);
+    font-size: 0.8rem;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+.form-mesaj:empty { display: none; }
+
+/* Detayda geçersiz id / güncellemede id'siz adres */
+#detay,
+.uyari {
+    display: grid;
+    gap: var(--bosluk-m);
+}
+#detay > p,
+.uyari p { margin: 0; }
+
+/* ---------- Etkinlik detay: afiş + künye ---------- */
+.detay {
+    display: grid;
+    gap: var(--bosluk-m);
+    align-items: start;
+}
+.detay p { margin: 0; }
+
+/* Afiş veriden üretilir: başlık, tarih ve yer */
+.afis-cerceve {
+    display: none; /* telefonda yer kaplamasın: aynı bilgiler künyede var */
+    max-width: 36rem;
+}
+.afis {
+    display: grid;
+    place-content: center;
+    gap: var(--bosluk-s);
+    aspect-ratio: 16 / 9;
+    padding: var(--bosluk-l);
+    text-align: center;
+    background: var(--renk-yazi);
+    color: var(--renk-kart);
+    border-radius: var(--kose);
+    box-shadow:
+        inset 0 0 0 var(--bosluk-s) var(--renk-yazi),
+        inset 0 0 0 calc(var(--bosluk-s) + 2px) var(--renk-ana);
+}
+.afis-kategori {
+    color: var(--renk-acik);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+.afis-baslik { font-size: clamp(1.1rem, 2.4vw, 1.5rem); line-height: 1.3; }
+.afis-tarih { color: var(--renk-ana); font-weight: bold; }
+.afis-yer { color: var(--renk-cizgi); font-size: 0.875rem; }
+
+.kunye {
+    display: grid;
+    gap: var(--bosluk-m);
+    padding: var(--bosluk-m);
+    background: var(--renk-kart);
+    border: 1px solid var(--renk-cizgi);
+    border-radius: var(--kose);
+}
+.kunye h2 { font-size: 1.15rem; color: var(--renk-yazi); }
+.detay dl {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr); /* telefon: dt üstte, dd altında */
+    margin: 0;
+}
+.detay dt { font-weight: bold; color: var(--renk-soluk); }
+.detay dd { margin: 0; }
+.detay dd + dt { margin-top: var(--bosluk-s); }
+
+/* ---------- Formlar ---------- */
+form {
+    display: grid;
+    gap: var(--bosluk-m);
+    max-width: var(--form-genislik);
+    padding: var(--bosluk-m);
+    background: var(--renk-kart);
+    border: 1px solid var(--renk-cizgi);
+    border-radius: var(--kose);
+}
+form p {
+    display: grid;
+    gap: calc(var(--bosluk-s) / 2);
+    margin: 0;
+}
+form .form-not { color: var(--renk-soluk); font-size: 0.875rem; }
+label { font-weight: bold; } /* label üstte: p grid olduğu için alt alta dizilir */
+
+input, select, textarea {
+    width: 100%;
+    min-height: var(--dokunma);
+    padding: var(--bosluk-s);
+    font: inherit;
+    color: inherit;
+    background: var(--renk-kart);
+    border: 1px solid var(--renk-soluk);
+    border-radius: var(--kose);
+}
+textarea { resize: vertical; }
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 3px solid var(--renk-ana);
+    outline-offset: 1px;
+}
+
+/* Hatalı alan kırmızı: event-form.js aria-invalid="true" koyar, altına mesaj yazar */
+[aria-invalid="true"] {
+    border: 2px solid var(--renk-hata);
+    background: var(--renk-hata-zemin);
+}
+.hata {
+    color: var(--renk-hata);
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+.hata:empty { display: none; }
+form button { justify-self: start; }
+
+/* ---------- Geniş ekran ---------- */
+@media (min-width: 40rem) {
+    nav a { padding: 0 var(--bosluk-m); }
+    .kartlar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    form { padding: var(--bosluk-l); }
+
+    /* Arama ve kategori yan yana */
+    .filtre { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+
+    .afis-cerceve { display: block; }
+    .detay dl {
+        grid-template-columns: max-content minmax(0, 1fr);
+        gap: var(--bosluk-s) var(--bosluk-m);
+    }
+    .detay dd + dt { margin-top: 0; }
+}
+
+@media (min-width: 60rem) {
+    .kartlar-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    /* Afiş ve açıklama solda, künye sağda */
+    .detay {
+        grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+        column-gap: var(--bosluk-l);
+    }
+    .detay > * { grid-column: 1; }
+    .detay > .kunye { grid-column: 2; grid-row: 1 / span 4; }
+}
