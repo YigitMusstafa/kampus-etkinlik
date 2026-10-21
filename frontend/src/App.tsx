@@ -67,7 +67,7 @@ function App() {
             <div className="bolum">
               <h2 id="yaklasan-baslik">Yaklaşan Etkinlikler</h2>
               <section className="kartlar" aria-labelledby="yaklasan-baslik">
-                <EventList events={upcoming} onShowDetail={showDetail} emptyText="Yaklaşan etkinlik yok." />
+                <EventList events={upcoming} onShowDetail={showDetail} />
               </section>
             </div>
             <p>
@@ -82,12 +82,12 @@ function App() {
           <div className="bolum">
             <EventFilter searchText={searchText} category={category} categories={categories}
               onSearchChange={setSearchText} onCategoryChange={setCategory} />
-            {/* "bulunamadı" mesajı da bu satırda: ekran okuyucu sonucu duyurur */}
-            <p className="sonuc" aria-live="polite">
-              {filtered.length === 0 ? "Aramanıza uygun etkinlik bulunamadı." : `${filtered.length} etkinlik listeleniyor.`}
-            </p>
+            {/* Liste boşsa "bulunamadı" mesajını EventList gösterir */}
+            {filtered.length > 0 && (
+              <p className="sonuc" aria-live="polite">{filtered.length} etkinlik listeleniyor.</p>
+            )}
             <section className="kartlar kartlar-3">
-              <EventList events={filtered} onShowDetail={showDetail} />
+              <EventList events={filtered} onShowDetail={showDetail} emptyText="Aramanıza uygun etkinlik bulunamadı." />
             </section>
           </div>
         )}

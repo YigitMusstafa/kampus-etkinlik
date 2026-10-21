@@ -9,10 +9,8 @@ interface EventListProps {
 
 // Ana sayfa ve Etkinlikler aynı listeyi kullanır; kart kodu tek yerde
 function EventList({ events, onShowDetail, emptyText }: EventListProps) {
-  // Boşsa kartların yerine mesaj (verilmediyse hiçbir şey)
-  if (events.length === 0) {
-    return emptyText ? <p className="sonuc">{emptyText}</p> : null;
-  }
+  // Dizi boşsa sadece mesaj
+  if (events.length === 0) return <p className="sonuc">{emptyText}</p>;
 
   // key index değil id: filtre değişince sıra değişir
   return (
