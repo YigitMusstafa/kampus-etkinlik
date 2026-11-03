@@ -57,7 +57,7 @@ a:focus-visible, button:focus-visible {
     outline-offset: 2px;
 }
 
-/* ---------- Başlık ve menü (beş sayfada aynı) ---------- */
+/* ---------- Başlık ve menü (her sayfada aynı) ---------- */
 header {
     display: grid;
     gap: var(--bosluk-m);
@@ -112,7 +112,7 @@ footer p { margin: 0; }
     gap: var(--bosluk-m);
 }
 
-/* ---------- Kartlar: section > article + grid (kartları event-list.js üretir) ---------- */
+/* ---------- Kartlar: section > article + grid (kartları EventList üretir) ---------- */
 .kartlar {
     display: grid;
     grid-template-columns: minmax(0, 1fr); /* telefon: tek sütun */
@@ -310,7 +310,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
     outline-offset: 1px;
 }
 
-/* Hatalı alan kırmızı: event-form.js aria-invalid="true" koyar, altına mesaj yazar */
+/* Hatalı alan kırmızı: EventForm aria-invalid="true" koyar, altına mesaj yazar */
 [aria-invalid="true"] {
     border: 2px solid var(--renk-hata);
     background: var(--renk-hata-zemin);

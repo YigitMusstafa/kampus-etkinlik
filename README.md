@@ -71,7 +71,7 @@ Ana sayfa `index.html` olduğu için adres doğrudan onu açar.
 
 - GitHub repo linki: https://github.com/YigitMusstafa/kampus-etkinlik
 - Git tag: `sprint-01`
-- Canlı URL (Vercel): https://kampus-etkinlik-alpha.vercel.app
+- Canlı URL (Vercel): https://mustafayigitemet-frontend.vercel.app
 
 ## Bitti demeden önce kontrol listesi
 

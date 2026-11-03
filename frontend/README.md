@@ -1,6 +1,6 @@
-https://kampus-etkinlik-alpha.vercel.app
+https://mustafayigitemet-frontend.vercel.app
 
-# Kampüs Etkinlikleri — Sprint 4 (Vite + TypeScript + React)
+# Kampüs Etkinlikleri — frontend (Vite + TypeScript + React)
 
 | Dosya | Görevi |
 |---|---|
@@ -9,15 +9,18 @@ https://kampus-etkinlik-alpha.vercel.app
 | `node_modules/` | `npm install` ile indirilen paketler; `.gitignore` sayesinde GitHub'a gitmez. |
 | `tsconfig*.json` | TypeScript ayarları (uygulama kodu ve Vite ayar dosyası için ayrı ayrı). |
 | `vite.config.ts` | Vite ayarları; React eklentisini açar. |
+| `vercel.json` | Vercel'de her adresi `index.html`'e yönlendirir; sayfa yenilenince 404 vermez. |
 | `index.html` | Tek HTML dosyası; içindeki boş `div#root`'a React çizer. |
-| `src/main.tsx` | React'i başlatır, `App`'i `#root`'a çizer (`createRoot`). |
-| `src/App.tsx` | Uygulamanın ana bileşeni; 5 sayfanın hepsi burada, açık sayfayı state seçer. |
+| `src/main.tsx` | React'i başlatır; `App`'i `BrowserRouter` ve `EventsProvider` ile sarıp `#root`'a çizer. |
+| `src/App.tsx` | Uygulamanın kabuğu: Header, Navigation, Routes ve Footer; state yok, açık sayfayı adres seçer. |
 | `src/App.css` | App'in stilleri; Sprint 3'teki CSS dosyası olduğu gibi buraya taşındı. |
-| `src/index.css` | Tüm sayfaya genel stil; bu sprintte boş. |
+| `src/index.css` | Tüm sayfaya genel stil; boş. |
 | `public/` | Olduğu gibi kopyalanan dosyalar (afiş `afis.jpg`, `favicon.svg`). |
 
-Tip, veri ve saf fonksiyonlar ayrı `.ts` dosyalarında: `src/types/campus-event.ts`,
-`src/data/events.ts`, `src/utils/filter-events.ts`.
+Sayfalar `src/pages/` (10 sayfa), ortak etkinlik listesi `src/context/EventsContext.tsx`,
+bileşenler `src/components/` içinde. Tip, veri ve saf fonksiyonlar ayrı `.ts` dosyalarında:
+`src/types/campus-event.ts`, `src/data/events.ts`, `src/utils/filter-events.ts`,
+`src/utils/format-date.ts`, `src/utils/validate-event.ts`.
 
 ```bash
 npm install

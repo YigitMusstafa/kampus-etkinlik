@@ -8,7 +8,7 @@ interface EventFilterProps {
   onCategoryChange: (category: Category | "") => void;
 }
 
-// State App'te (lifting state): kutu değeri gösterir, değişikliği yukarı bildirir
+// State EventsPage'te (lifting state): kutu değeri gösterir, değişikliği yukarı bildirir
 function EventFilter({
   searchText,
   category,
