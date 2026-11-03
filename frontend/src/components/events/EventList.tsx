@@ -3,12 +3,11 @@ import EventCard from "./EventCard";
 
 interface EventListProps {
   events: CampusEvent[];
-  onShowDetail: (id: string) => void;
   emptyText?: string;
 }
 
 // Ana sayfa ve Etkinlikler aynı listeyi kullanır; kart kodu tek yerde
-function EventList({ events, onShowDetail, emptyText }: EventListProps) {
+function EventList({ events, emptyText }: EventListProps) {
   // Dizi boşsa sadece mesaj
   if (events.length === 0) return <p className="sonuc">{emptyText}</p>;
 
@@ -16,7 +15,7 @@ function EventList({ events, onShowDetail, emptyText }: EventListProps) {
   return (
     <>
       {events.map((event) => (
-        <EventCard key={event.id} event={event} onShowDetail={onShowDetail} />
+        <EventCard key={event.id} event={event} />
       ))}
     </>
   );

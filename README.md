@@ -1,4 +1,4 @@
-https://kampus-etkinlik-alpha.vercel.app
+https://mustafayigitemet-frontend.vercel.app
 
 # Kampüs Etkinlikleri — Sprint 1
 
@@ -194,3 +194,36 @@ frontend/src/
 **Vercel:** Settings → Root Directory → `frontend`, Framework Preset → `Vite`
 
 **Teslim:** Git tag `sprint-04`
+
+---
+
+# Sprint 6 + Vize — Router, Context ve Yönetim
+
+**Canlı adres:** https://mustafayigitemet-frontend.vercel.app
+
+## Kurulum
+
+```bash
+cd frontend
+npm install
+npm run dev      # http://localhost:5173
+```
+
+## Route listesi
+
+| Adres | Sayfa | Ne var |
+|---|---|---|
+| `/` | HomePage | Yaklaşan 2 etkinlik |
+| `/events` | EventsPage | Tüm etkinlikler, arama ve kategori filtresi |
+| `/events/:id` | EventDetailPage | Etkinlik detayı |
+| `/admin` | AdminPage | Yönetim tablosu: Düzenle, Sil (onaylı) |
+| `/admin/new` | AddEventPage | Yeni etkinlik formu |
+| `/admin/:id/edit` | EditEventPage | Etkinlik güncelleme formu |
+| `/login` | LoginPage | Giriş formu |
+| `/register` | RegisterPage | Kayıt formu |
+| `/forgot-password` | ForgotPasswordPage | Şifremi unuttum formu |
+| `*` | NotFoundPage | Sayfa bulunamadı |
+
+Etkinlikler `EventsContext`'te tutulur; ekle, güncelle ve sil bütün sayfalara
+yansır, sayfa yenilenince veri başa döner. `frontend/vercel.json` her adresi
+`index.html`'e yönlendirir; Vercel'de `/events` gibi adresler yenilenince 404 vermez.

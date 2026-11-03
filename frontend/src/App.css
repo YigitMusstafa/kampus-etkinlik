@@ -350,3 +350,31 @@ form button { justify-self: start; }
     .detay > * { grid-column: 1; }
     .detay > .kunye { grid-column: 2; grid-row: 1 / span 4; }
 }
+
+/* ---------- Yönetim tablosu: masaüstünde tablo, telefonda kart ---------- */
+.tablo { width: 100%; border-collapse: collapse; background: var(--renk-kart); }
+.tablo th, .tablo td {
+    padding: var(--bosluk-s) var(--bosluk-m);
+    border-bottom: 1px solid var(--renk-cizgi);
+    text-align: left;
+}
+.tablo th { background: var(--renk-ana); color: var(--renk-yazi); } /* ton 61'de beyaz okunmuyor: başlık şeridi gibi koyu yazı */
+.islemler { display: flex; flex-wrap: wrap; gap: var(--bosluk-s); }
+.buton-sil { background: var(--renk-hata); }
+
+@media (max-width: 699px) {
+    .tablo thead { display: none; }
+    .tablo tr {
+        display: block;
+        margin-bottom: var(--bosluk-m);
+        padding: var(--bosluk-s);
+        border: 1px solid var(--renk-cizgi);
+        border-radius: var(--kose);
+    }
+    .tablo td { display: block; padding: 4px var(--bosluk-s); border: 0; }
+    .tablo td.islemler { display: flex; margin-top: var(--bosluk-s); }
+    .tablo td[data-baslik]::before {
+        content: attr(data-baslik) ": ";
+        font-weight: 700;
+    }
+}

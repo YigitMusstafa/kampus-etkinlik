@@ -1,0 +1,58 @@
+import { createContext, useContext, useState, type ReactNode } from "react";
+import type { CampusEvent, Category, EventFormData } from "../types/campus-event";
+import { events as initialEvents } from "../data/events";
+
+// Liste ve üç fonksiyon tek yerde: sayfalar props beklemeden useEvents() ile alır
+interface EventsContextValue {
+  events: CampusEvent[];
+  addEvent: (data: EventFormData) => void;
+  updateEvent: (id: string, data: EventFormData) => void;
+  deleteEvent: (id: string) => void;
+}
+
+const EventsContext = createContext<EventsContextValue | null>(null);
+
+// toEvent: form verisini CampusEvent'e çevirir
+function toEvent(id: string, data: EventFormData): CampusEvent {
+  return {
+    id,
+    title: data.title.trim(),
+    category: data.category as Category,
+    capacity: Number(data.capacity),
+    date: data.date,
+    time: data.time,
+    location: data.location.trim(),
+    description: data.description.trim(),
+  };
+}
+
+export function EventsProvider({ children }: { children: ReactNode }) {
+  const [events, setEvents] = useState(initialEvents);
+
+  // push, splice yok: eski dizi değişirse React farkı görmez; her seferinde yeni dizi
+  function addEvent(data: EventFormData) {
+    setEvents([...events, toEvent(`event-${Date.now()}`, data)]);
+  }
+
+  function updateEvent(id: string, data: EventFormData) {
+    // Formda afiş alanı yok: etkinliğin afişi varsa korunur
+    setEvents(events.map((e) =>
+      e.id === id ? { ...toEvent(id, data), image: e.image } : e));
+  }
+
+  function deleteEvent(id: string) {
+    setEvents(events.filter((e) => e.id !== id));
+  }
+
+  return (
+    <EventsContext.Provider value={{ events, addEvent, updateEvent, deleteEvent }}>
+      {children}
+    </EventsContext.Provider>
+  );
+}
+
+export function useEvents() {
+  const value = useContext(EventsContext);
+  if (value === null) throw new Error("Provider yok");
+  return value;
+}
