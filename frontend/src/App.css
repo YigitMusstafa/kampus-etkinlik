@@ -68,16 +68,17 @@ header {
 header h1 { font-size: clamp(1.4rem, 5vw, 2rem); }
 
 nav {
-    display: flex; /* üç link: Ana Sayfa, Etkinlikler, Ekle — telefonda da tek satır */
+    display: flex; /* dört link: Ana Sayfa, Etkinlikler, Yönetim, Giriş — telefonda da tek satır */
     flex-wrap: wrap;
-    gap: var(--bosluk-s);
+    gap: calc(var(--bosluk-s) / 2);
 }
 nav a {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: var(--dokunma);
-    padding: 0 var(--bosluk-s);
+    padding: 0 calc(var(--bosluk-s) * 0.75);
+    font-size: 0.875rem; /* 360 px'te dört link yan yana sığsın */
     border-radius: var(--kose);
     color: var(--renk-yazi);
     font-weight: bold;
@@ -324,7 +325,8 @@ form button { justify-self: start; }
 
 /* ---------- Geniş ekran ---------- */
 @media (min-width: 40rem) {
-    nav a { padding: 0 var(--bosluk-m); }
+    nav { gap: var(--bosluk-s); }
+    nav a { padding: 0 var(--bosluk-m); font-size: 1rem; }
     .kartlar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     form { padding: var(--bosluk-l); }
 
