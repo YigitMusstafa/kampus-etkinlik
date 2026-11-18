@@ -1,12 +1,17 @@
+import mongoose from "mongoose";
+import { Event } from "../models/event-model.js";
 import { events } from "../data/events.js";
 
 // GET /events (?category=Atölye isteğe bağlı)
-export function getEvents(req, res) {
-  const { category } = req.query;
-  const list = category
-    ? events.filter((e) => e.category === category)
-    : events;
-  res.json(list);
+export async function getEvents(req, res, next) {
+  try {
+    const filter = req.query.category
+      ? { category: req.query.category } : {};
+    const events = await Event.find(filter).sort({ date: 1 });
+    res.json(events);
+  } catch (err) {
+    next(err);
+  }
 }
 
 // GET /events/:id
