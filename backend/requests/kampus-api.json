@@ -22,7 +22,26 @@
 					]
 				}
 			},
-			"response": []
+			"response": [],
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"status ok\", function () {",
+							"  pm.expect(pm.response.json().status).to.eql(\"ok\");",
+							"});",
+							"pm.test(\"student öğrenci numarası\", function () {",
+							"  pm.expect(pm.response.json().student).to.eql(\"2321032021\");",
+							"});"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "2 Etkinlik listesi",
@@ -41,7 +60,31 @@
 					]
 				}
 			},
-			"response": []
+			"response": [],
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Yanıt dolu bir dizi\", function () {",
+							"  const list = pm.response.json();",
+							"  pm.expect(list).to.be.an(\"array\").that.is.not.empty;",
+							"});",
+							"pm.test(\"Her kayıtta _id, createdAt, updatedAt var\", function () {",
+							"  pm.response.json().forEach(function (e) {",
+							"    pm.expect(e).to.have.property(\"_id\");",
+							"    pm.expect(e).to.have.property(\"createdAt\");",
+							"    pm.expect(e).to.have.property(\"updatedAt\");",
+							"  });",
+							"});"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "3 Tek etkinlik",
@@ -61,7 +104,24 @@
 					]
 				}
 			},
-			"response": []
+			"response": [],
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Adresteki _id ile aynı kayıt\", function () {",
+							"  const id = pm.request.url.path[pm.request.url.path.length - 1];",
+							"  pm.expect(pm.response.json()._id).to.eql(id);",
+							"});"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "4 Olmayan etkinlik (404)",
@@ -81,7 +141,23 @@
 					]
 				}
 			},
-			"response": []
+			"response": [],
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status 404\", function () {",
+							"  pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Event not found mesajı\", function () {",
+							"  pm.expect(pm.response.json().error.message).to.eql(\"Event not found\");",
+							"});"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "5 Etkinlik oluştur (201)",
@@ -109,7 +185,28 @@
 					]
 				}
 			},
-			"response": []
+			"response": [],
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status 201\", function () {",
+							"  pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Yeni kayıtta _id ve createdAt var\", function () {",
+							"  const e = pm.response.json();",
+							"  pm.expect(e._id).to.be.a(\"string\").and.have.lengthOf(24);",
+							"  pm.expect(e.createdAt).to.be.a(\"string\");",
+							"});",
+							"pm.test(\"Gönderilen title kaydedildi\", function () {",
+							"  pm.expect(pm.response.json().title).to.eql(\"Git Atölyesi\");",
+							"});"
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "6 Eksik veri (400)",
@@ -137,7 +234,23 @@
 					]
 				}
 			},
-			"response": []
+			"response": [],
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status 400\", function () {",
+							"  pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Doğrulama hatası mesajı\", function () {",
+							"  pm.expect(pm.response.json().error.message).to.include(\"validation failed\");",
+							"});"
+						]
+					}
+				}
+			]
 		}
 	]
 }
