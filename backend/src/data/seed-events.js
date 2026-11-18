@@ -1,0 +1,58 @@
+// npm run seed bu etkinlikleri veritabanına yazar; id alanı yok, _id'yi MongoDB verir.
+// Tarih "YYYY-AA-GG", saat "SS:DD".
+export const seedEvents = [
+  {
+    title: "AI’s Path Forward: From Intelligence to Super-intelligence",
+    category: "Seminer",
+    capacity: 200,
+    date: "2026-02-13",
+    time: "11:30",
+    location: "Çevrimiçi (Zoom)",
+    description: "AIARC'ın \"Minds of AI\" webinar serisinin 2. oturumunda Dr. Deepak Painuli, yapay zekânın süper zekâya uzanan yolunu anlatıyor.",
+  },
+  {
+    title: "Yapay Zekâ ve Yöneylem Araştırması Arakesiti",
+    category: "Söyleşi",
+    capacity: 150,
+    date: "2026-10-16",
+    time: "14:00",
+    location: "Çevrimiçi (Zoom)",
+    description: "AIARC'ın \"Minds of AI\" serisi kapsamında yapay zekâ ile yöneylem araştırmasının kesişimini konu alan panel oturumu.",
+  },
+  {
+    title: "Python ile Veri Analizi Atölyesi",
+    category: "Atölye",
+    capacity: 25,
+    date: "2026-10-22",
+    time: "13:30",
+    location: "Mühendislik Fakültesi Bilgisayar Laboratuvarı 2",
+    description: "Pandas ve Matplotlib ile gerçek bir veri setini temizleyip görselleştirme. Başlangıç seviyesi; dizüstü bilgisayarınızı getirin.",
+  },
+  {
+    title: "Yapay Zekâ Çağında Etik ve Sorumluluk",
+    category: "Seminer",
+    capacity: 120,
+    date: "2026-11-05",
+    time: "14:00",
+    location: "Mühendislik Fakültesi Konferans Salonu",
+    description: "Algoritmik önyargı, veri gizliliği ve sorumlu yazılım geliştirme üzerine öğretim üyeleriyle seminer.",
+  },
+  {
+    title: "Arduino ile Robotik Atölyesi",
+    category: "Atölye",
+    capacity: 20,
+    date: "2026-11-19",
+    time: "10:00",
+    location: "Elektronik Laboratuvarı",
+    description: "Arduino ile çizgi izleyen robot yapımı. Malzemeler atölyede verilir, ön bilgi gerekmez.",
+  },
+  {
+    title: "Mezunlarla Kariyer Sohbetleri",
+    category: "Seminer",
+    capacity: 150,
+    date: "2026-12-03",
+    time: "15:00",
+    location: "Rektörlük Konferans Salonu",
+    description: "Bilgisayar mühendisliği mezunları sektördeki ilk yıllarını ve iş başvurusu deneyimlerini anlatıyor.",
+  },
+];
