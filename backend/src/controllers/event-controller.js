@@ -15,11 +15,21 @@ export async function getEvents(req, res, next) {
 }
 
 // GET /events/:id
-export function getEventById(req, res) {
-  const event = events.find((e) => e.id === req.params.id);
-  if (!event) return res.status(404)
-    .json({ error: { message: "Event not found" } });
-  res.json(event);
+export async function getEventById(req, res, next) {
+  try {
+    if (!mongoose.isValidObjectId(req.params.id)) {
+      return res.status(404)
+        .json({ error: { message: "Event not found" } });
+    }
+    const event = await Event.findById(req.params.id);
+    if (!event) {
+      return res.status(404)
+        .json({ error: { message: "Event not found" } });
+    }
+    res.json(event);
+  } catch (err) {
+    next(err);
+  }
 }
 
 // POST /events
