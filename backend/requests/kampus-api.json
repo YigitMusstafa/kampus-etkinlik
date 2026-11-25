@@ -92,7 +92,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/events/6afd5420bf1de6d4ab9218ba",
+					"raw": "http://localhost:3000/events/6b0683db377e1656b9967b2d",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -100,7 +100,7 @@
 					"port": "3000",
 					"path": [
 						"events",
-						"6afd5420bf1de6d4ab9218ba"
+						"6b0683db377e1656b9967b2d"
 					]
 				}
 			},
@@ -166,7 +166,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"title\": \"Git Atölyesi\",\r\n  \"category\": \"Atölye\",\r\n  \"date\": \"2026-12-01\",\r\n  \"capacity\": 30,\r\n  \"time\": \"14:00\",\r\n  \"location\": \"Mühendislik Fakültesi Bilgisayar Laboratuvarı 2\",\r\n  \"description\": \"Git ve GitHub ile sürüm kontrolüne giriş.\"\r\n}",
+					"raw": "{\r\n  \"title\": \"Git Atölyesi\",\r\n  \"category\": \"Atölye\",\r\n  \"date\": \"01-12-2026\",\r\n  \"capacity\": 30,\r\n  \"time\": \"14:00\",\r\n  \"location\": \"Mühendislik Fakültesi Bilgisayar Laboratuvarı 2\",\r\n  \"description\": \"Git ve GitHub ile sürüm kontrolüne giriş.\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

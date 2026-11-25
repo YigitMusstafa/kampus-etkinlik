@@ -1,11 +1,11 @@
 // npm run seed bu etkinlikleri veritabanına yazar; id alanı yok, _id'yi MongoDB verir.
-// Tarih "YYYY-AA-GG", saat "SS:DD".
+// Tarih "GG-AA-YYYY", saat "SS:DD".
 export const seedEvents = [
   {
     title: "AI’s Path Forward: From Intelligence to Super-intelligence",
     category: "Seminer",
     capacity: 200,
-    date: "2026-02-13",
+    date: "13-02-2026",
     time: "11:30",
     location: "Çevrimiçi (Zoom)",
     description: "AIARC'ın \"Minds of AI\" webinar serisinin 2. oturumunda Dr. Deepak Painuli, yapay zekânın süper zekâya uzanan yolunu anlatıyor.",
@@ -14,7 +14,7 @@ export const seedEvents = [
     title: "Yapay Zekâ ve Yöneylem Araştırması Arakesiti",
     category: "Söyleşi",
     capacity: 150,
-    date: "2026-10-16",
+    date: "16-10-2026",
     time: "14:00",
     location: "Çevrimiçi (Zoom)",
     description: "AIARC'ın \"Minds of AI\" serisi kapsamında yapay zekâ ile yöneylem araştırmasının kesişimini konu alan panel oturumu.",
@@ -23,7 +23,7 @@ export const seedEvents = [
     title: "Python ile Veri Analizi Atölyesi",
     category: "Atölye",
     capacity: 25,
-    date: "2026-10-22",
+    date: "22-10-2026",
     time: "13:30",
     location: "Mühendislik Fakültesi Bilgisayar Laboratuvarı 2",
     description: "Pandas ve Matplotlib ile gerçek bir veri setini temizleyip görselleştirme. Başlangıç seviyesi; dizüstü bilgisayarınızı getirin.",
@@ -32,7 +32,7 @@ export const seedEvents = [
     title: "Yapay Zekâ Çağında Etik ve Sorumluluk",
     category: "Seminer",
     capacity: 120,
-    date: "2026-11-05",
+    date: "05-11-2026",
     time: "14:00",
     location: "Mühendislik Fakültesi Konferans Salonu",
     description: "Algoritmik önyargı, veri gizliliği ve sorumlu yazılım geliştirme üzerine öğretim üyeleriyle seminer.",
@@ -41,7 +41,7 @@ export const seedEvents = [
     title: "Arduino ile Robotik Atölyesi",
     category: "Atölye",
     capacity: 20,
-    date: "2026-11-19",
+    date: "19-11-2026",
     time: "10:00",
     location: "Elektronik Laboratuvarı",
     description: "Arduino ile çizgi izleyen robot yapımı. Malzemeler atölyede verilir, ön bilgi gerekmez.",
@@ -50,7 +50,7 @@ export const seedEvents = [
     title: "Mezunlarla Kariyer Sohbetleri",
     category: "Seminer",
     capacity: 150,
-    date: "2026-12-03",
+    date: "03-12-2026",
     time: "15:00",
     location: "Rektörlük Konferans Salonu",
     description: "Bilgisayar mühendisliği mezunları sektördeki ilk yıllarını ve iş başvurusu deneyimlerini anlatıyor.",
